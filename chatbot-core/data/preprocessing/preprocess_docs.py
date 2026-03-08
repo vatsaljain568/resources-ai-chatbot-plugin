@@ -59,10 +59,9 @@ def filter_content(urls, data, is_developer_content):
         content_without_tags = remove_tags(content_without_toc)
 
         # For non-developer docs, also remove edge navigation blocks.
+        content_without_navigation = content_without_tags
         if not is_developer_content:
             content_without_navigation = remove_edge_navigation_blocks(content_without_tags)
-        else:
-            content_without_navigation = content_without_tags
 
         content_without_comments = remove_html_comments(content_without_navigation)
         content_without_body_wrappers = strip_html_body_wrappers(content_without_comments)
